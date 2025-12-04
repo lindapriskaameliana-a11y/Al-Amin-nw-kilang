@@ -1,0 +1,364 @@
+<!-- Enhanced Template: Sekolah Modern & Elegan (Multi-fit & Customizable)
+     - Includes: Tailwind CSS (optional), Bootstrap commented options, color branding switcher,
+       form integration examples (Google Forms/PHP), multi-page simulated layout, image placeholders,
+       accessible markup, and instructions in comments.
+-->
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sekolah Modern & Elegan — Nama Sekolah</title>
+  <meta name="description" content="Website resmi Sekolah Modern — profil, program, pendaftaran, galeri.">
+
+  <!-- ======= Choose styling system =======
+       By default this template uses lightweight custom CSS (no framework).
+       If you prefer Tailwind, uncomment the Tailwind CDN line below and delete / ignore the custom <style>.
+       If you prefer Bootstrap, uncomment the Bootstrap CSS link and consider using its classes.
+  -->
+  <!-- Tailwind CDN (optional) -->
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+  <!-- Bootstrap 5 (optional) -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Brand colors (edit to match sekolah) ---------- */
+    :root{
+      --brand-1: #0f62fe; /* utama */
+      --brand-2: #7c3aed; /* aksen */
+      --muted: #6b7280;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --radius:14px;
+      --shadow: 0 8px 24px rgba(12,18,28,0.06);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    /* ---------- Reset & layout ---------- */
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#ffffff 60%);color:#0f1724;line-height:1.45}
+    a{color:var(--brand-1);text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    header{position:sticky;top:12px;z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;backdrop-filter: blur(8px)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--brand-1),var(--brand-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+    .cta{padding:10px 16px;border-radius:12px;background:var(--brand-1);color:white;font-weight:700}
+    .mobile-toggle{display:none;border:0;background:none;font-size:20px}
+
+    /* ---------- Hero ---------- */
+    .hero{display:grid;grid-template-columns:1fr 480px;gap:36px;align-items:center;padding:60px 0}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.75));padding:36px;border-radius:20px;box-shadow:var(--shadow)}
+    h1{font-size:2.25rem;margin:0 0 14px}
+    p.lead{color:var(--muted);margin:0 0 22px}
+    .features{display:flex;gap:12px;flex-wrap:wrap}
+    .feature{background:var(--card);padding:12px 14px;border-radius:12px;display:flex;gap:12px;align-items:center;box-shadow:0 6px 18px rgba(12,18,28,0.04)}
+    .hero-visual{height:420px;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#eef2ff,#fdf2f8);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+    .img-placeholder{width:100%;height:100%;display:block;background-size:cover;background-position:center}
+
+    /* ---------- Sections & Cards ---------- */
+    section{padding:60px 0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:var(--card);padding:20px;border-radius:14px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 8px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px}
+
+    footer{padding:40px 0;background:transparent}
+    .footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+    /* ---------- Utilities & responsive ---------- */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(15,98,254,0.08);color:var(--brand-1);font-weight:700}
+
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .hero-visual{height:300px}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      nav ul{display:none}
+      .mobile-toggle{display:block}
+      .cards{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+    }
+
+    /* Small form styles */
+    input, textarea, select, button{font-family:inherit}
+    input[type=text], input[type=tel], input[type=email], textarea{width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #e6e9ef}
+
+    /* subtle focus states for accessibility */
+    a:focus, button:focus, input:focus{outline:3px solid rgba(15,98,254,0.12);outline-offset:3px}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <div class="logo">FP</div>
+        <div>
+          <div style="font-weight:700">AL-AMIN NW KILANG</div>
+          <div class="muted" style="font-size:12px">Belajar · Berkembang · Berprestasi</div>
+        </div>
+      </div>
+
+      <nav>
+        <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="mainMenu">☰</button>
+        <ul id="mainMenu">
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#program">Program</a></li>
+          <li><a href="#guru">Guru & Staf</a></li>
+          <li><a href="#galeri">Galeri</a></li>
+          <li><a href="#daftar" class="cta">Daftar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero">
+      <div class="hero-card">
+        <span class="pill">Terakreditasi A</span>
+        <h1>Sekolah Modern & Elegan — Mencetak Generasi Masa Depan</h1>
+        <p class="lead">Kurikulum inovatif, fasilitas lengkap, dan metode pengajaran berpusat pada siswa untuk mengembangkan potensi terbaik setiap anak.</p>
+
+        <div class="features" aria-hidden>
+          <div class="feature"><strong>✔</strong><div><div style="font-weight:700">Fasilitas Lengkap</div><div class="muted" style="font-size:13px">Laboratorium, Perpustakaan, Sport Center</div></div></div>
+          <div class="feature"><strong>🎓</strong><div><div style="font-weight:700">Program Prestasi</div><div class="muted" style="font-size:13px">Olimpiade, Ekstrakurikuler</div></div></div>
+          <div class="feature"><strong>🌱</strong><div><div style="font-weight:700">Pembelajaran Holistik</div><div class="muted" style="font-size:13px">Kreativitas & Karakter</div></div></div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="cta" href="#daftar">Daftar Sekarang</a>
+          <a href="#galeri" style="align-self:center">Lihat Galeri →</a>
+          <button id="brandSwitcherBtn" style="padding:10px;border-radius:10px;border:1px solid #e6e9ef;background:transparent">Ganti Warna</button>
+        </div>
+
+        <div style="margin-top:22px;color:var(--muted);font-size:14px">Hubungi kami: <a href="tel:+628123456789">+62 812-3456-789</a> · <a href="mailto:info@sekolahmodern.sch.id">info@sekolahmodern.sch.id</a></div>
+      </div>
+
+      <div class="hero-visual" aria-hidden>
+        <div class="img-placeholder" role="img" aria-label="Foto suasana sekolah modern (gantikan dengan gambar Anda)" style="background-image:url('fp.jpg')"></div>
+      </div>
+    </section>
+
+    <!-- ===== PROGRAM ===== -->
+    <section id="program">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+        <h2>Program Ekstrakulikuler</h2>
+        <div class="muted">Inovasi pendidikan & pengembangan karakter</div>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <img src="program1.jpeg" alt="STEM" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:12px">
+          <h3>PRAMUKA</h3>
+          <p class="muted">Pembelajaran sains-komputasi dan proyek berbasis praktik untuk mengasah problem solving.</p>
+        </article>
+        <article class="card">
+          <img src="program2.jpeg" alt="Bahasa" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:12px">
+          <h3>BELADIRI(KARATE)</h3>
+          <p class="muted">Program penguasaan bahasa asing dan literasi kritis sejak dini.</p>
+        </article>
+        <article class="card">
+          <img src="program3.jpeg" alt="Seni" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:12px">
+          <h3>Olahraga & Seni</h3>
+          <p class="muted">Ekstrakurikuler beragam untuk mengembangkan bakat dan kesehatan siswa.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== GURU ===== -->
+    <section id="guru">
+      <div class="grid-2">
+        <div>
+          <h2>Guru & Staf Profesional</h2>
+          <p class="muted">Tenaga pendidik berkualifikasi, pelatihan rutin, dan pendekatan pembelajaran yang personal.</p>
+          <ul>
+            <li>Program pengembangan profesional</li>
+            <li>Rasio guru : siswa yang ideal</li>
+            <li>Pendampingan karier & konseling</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card">
+            <h3>Headmaster — Nama Kepala Sekolah</h3>
+            <p class="muted">Pesan singkat atau visi & misi singkat kepala sekolah. Tambahkan foto kepala sekolah di sini jika tersedia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== FOTO TENAGA PENDIDIK ===== -->
+      <div style="margin-top:36px">
+        <h3>Foto Tenaga Pendidik</h3>
+        <p class="muted">Beberapa guru dan staf terbaik kami.</p>
+
+        <div class="gallery" style="margin-top:14px">
+          <img src="" alt="Guru 1">
+          <img src="" alt="Guru 2">
+          <img src="" alt="Guru 3">
+          <img src="" alt="Guru 4">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALERI ===== -->
+    <section id="galeri">
+      <h2>Galeri Kegiatan</h2>
+      <p class="muted">Dokumentasi pembelajaran, kegiatan ekstrakurikuler, dan acara sekolah.</p>
+
+      <div class="gallery" style="margin-top:14px">
+        <img src="galeri1.jpg" alt="Kegiatan 1">
+        <img src="galeri2.jpg" alt="Kegiatan 2">
+        <img src="galeri3.jpg" alt="Kegiatan 3">
+        <img src="galeri4.jpg" alt="Kegiatan 4">
+        <img src="galeri5.jpg" alt="Kegiatan 5">
+      </div>
+    </section>
+
+    <!-- ===== PENDAFTARAN (Form) ===== -->
+    <section id="daftar">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <h2>Pendaftaran Terbuka</h2>
+          <p class="muted">Isi formulir pendaftaran online atau kunjungi kantor penerimaan siswa baru kami.</p>
+          <ul class="muted">
+            <li>Persyaratan: Fotokopi KK, Akta Kelahiran, Ijazah terakhir</li>
+            <li>Biaya pendaftaran: Rp. 200.000 (opsional, ubah sesuai kebutuhan)</li>
+          </ul>
+
+          <p class="muted" style="margin-top:12px">Form terhubung: contoh integrasi tersedia di bawah (Google Forms & PHP/Node.js).</p>
+        </div>
+
+        <!-- Simple form (client-side demo) -->
+        <form id="regForm" style="background:var(--card);padding:18px;border-radius:12px;min-width:320px;box-shadow:var(--shadow)" aria-label="Form pendaftaran singkat">
+          <label style="display:block;margin-bottom:8px">
+            <span style="font-weight:700">Nama Lengkap</span>
+            <input type="text" name="nama" required>
+          </label>
+          <label style="display:block;margin-bottom:8px">
+            <span style="font-weight:700">No. Telepon</span>
+            <input type="tel" name="tel" required>
+          </label>
+          <label style="display:block;margin-bottom:12px">
+            <span style="font-weight:700">Email</span>
+            <input type="email" name="email">
+          </label>
+          <label style="display:block;margin-bottom:12px">
+            <span style="font-weight:700">Catatan</span>
+            <textarea name="note" rows="3" style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ef"></textarea>
+          </label>
+          <button type="submit" class="cta" style="width:100%">Kirim Pendaftaran</button>
+        </form>
+      </div>
+
+      <!-- Integration examples (commented) -->
+      <!--
+        Google Forms: create a Google Form and use its POST URL as the form action
+        <form action="GOOGLE_FORM_POST_URL" method="POST"> ... </form>
+
+        PHP backend example (server-side):
+        <form action="/submit.php" method="POST"> ... </form>
+        submit.php:
+        <?php
+          // receive fields: $_POST['nama'], $_POST['tel'], $_POST['email'] ...
+          // validate & save to database (MySQL) or send email
+        ?>
+
+        Node.js (Express) example:
+        app.post('/submit', (req, res)=>{ /* req.body.nama ... save to DB */ });
+      -->
+    </section>
+
+    <!-- ===== MULTI-PAGE SIMULATION =====
+         This single-file template already acts like a multi-page site using anchor links.
+         If you want separate HTML pages, duplicate this file and change main <main> content per page.
+    ===== -->
+
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>Sekolah Modern</strong>
+        <p class="muted" style="max-width:420px">Alamat sekolah · Kota · Provinsi · Kodepos<br>Telp: +62 812-3456-789 · Email: info@sekolahmodern.sch.id</p>
+      </div>
+      <div style="text-align:right">
+        <div style="margin-bottom:8px">© <span id="year"></span> Sekolah Modern. Semua hak dilindungi.</div>
+        <div class="muted">Ikuti kami: <a href="#">Instagram</a> · <a href="#">Facebook</a> · <a href="#">YouTube</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const toggle = document.getElementById('mobileToggle');
+    const menu = document.getElementById('mainMenu');
+    toggle?.addEventListener('click', ()=>{
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      if(menu.style.display === 'flex'){
+        menu.style.display = '';
+      } else {
+        menu.style.display = 'flex';
+        menu.style.flexDirection = 'column';
+        menu.style.gap = '12px';
+        menu.style.alignItems = 'flex-end';
+      }
+    });
+
+    // Simple form handling (demo) — replace with real backend integration
+    document.getElementById('regForm')?.addEventListener('submit', function(e){
+      e.preventDefault();
+      // Example: send to server via fetch (uncomment and configure URL)
+      /*
+      fetch('/submit', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(Object.fromEntries(new FormData(this)))
+      }).then(r=>r.json()).then(()=>{ alert('Terima kasih, pendaftaran terkirim'); this.reset(); }).catch(()=>alert('Terjadi kesalahan'));
+      */
+      alert('Terima kasih! Form pendaftaran telah dikirim (demo).');
+      this.reset();
+    });
+
+    // Branding color switcher (demo)
+    const brandBtn = document.getElementById('brandSwitcherBtn');
+    let brandState = 0;
+    brandBtn?.addEventListener('click', ()=>{
+      brandState = (brandState + 1) % 3;
+      if(brandState === 0){ document.documentElement.style.setProperty('--brand-1','#0f62fe'); document.documentElement.style.setProperty('--brand-2','#7c3aed'); }
+      if(brandState === 1){ document.documentElement.style.setProperty('--brand-1','#059669'); document.documentElement.style.setProperty('--brand-2','#10b981'); }
+      if(brandState === 2){ document.documentElement.style.setProperty('--brand-1','#d97706'); document.documentElement.style.setProperty('--brand-2','#ef4444'); }
+    });
+
+    // Accessibility: enable skip-to-content with keyboard
+    (function(){
+      const skip = document.createElement('a');
+      skip.href = '#home';
+      skip.textContent = 'Skip to content';
+      skip.style.position='absolute'; skip.style.left='-999px'; skip.style.top='auto'; skip.style.background='white'; skip.style.padding='8px'; skip.style.zIndex=9999;
+      skip.addEventListener('focus', ()=>{ skip.style.left='12px'; skip.style.top='12px'; });
+      skip.addEventListener('blur', ()=>{ skip.style.left='-999px'; });
+      document.body.prepend(skip);
+    })();
+  </script>
+
+</body>
+</html>
